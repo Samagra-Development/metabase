@@ -8,10 +8,12 @@ import { connect } from "react-redux";
 import Databases from "metabase/entities/databases";
 import Groups from "metabase/entities/groups";
 import {
-  getPermissionEditor,
-  getSidebar,
-} from "../../selectors/group-data-permissions-page";
-import { getIsDirty, getDiff } from "../../selectors/data-permissions";
+  getDatabasesPermissionEditor,
+  getGroupsSidebar,
+  getIsDirty,
+  getDiff,
+} from "../../selectors/data-permissions";
+
 import {
   initializeDataPermissions,
   updateDataPermission,
@@ -166,8 +168,8 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state, props) => {
   return {
-    sidebar: getSidebar(state, props),
-    permissionEditor: getPermissionEditor(state, props),
+    sidebar: getGroupsSidebar(state, props),
+    permissionEditor: getDatabasesPermissionEditor(state, props),
     isDirty: getIsDirty(state, props),
     diff: getDiff(state, props),
   };

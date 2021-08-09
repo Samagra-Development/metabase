@@ -29,23 +29,12 @@ export const initializeDataPermissions = createThunkAction(
   },
 );
 
-const REFRESH_DATA_PERMISSIONS =
-  "metabase/admin/permissions/REFRESH_DATA_PERMISSIONS";
-export const refreshDataPermissions = createThunkAction(
-  REFRESH_DATA_PERMISSIONS,
-  () => async () => {
-    return PermissionsApi.graph();
-  },
-);
-
 const LOAD_DATA_PERMISSIONS =
   "metabase/admin/permissions/LOAD_DATA_PERMISSIONS";
 export const loadDataPermissions = createThunkAction(
   LOAD_DATA_PERMISSIONS,
-  () => async (dispatch, getState) => {
-    if (!getState().admin.dataPermissions) {
-      await dispatch(refreshDataPermissions());
-    }
+  () => async () => {
+    return PermissionsApi.graph();
   },
 );
 
@@ -61,23 +50,13 @@ export const initializeCollectionPermissions = createThunkAction(
   },
 );
 
-const REFRESH_COLLECTION_PERMISSIONS =
-  "metabase/admin/permissions/REFRESH_COLLECTION_PERMISSIONS";
-export const refreshCollectionPermissions = createThunkAction(
-  REFRESH_COLLECTION_PERMISSIONS,
-  namespace => async () => {
-    return CollectionsApi.graph({ namespace });
-  },
-);
-
 const LOAD_COLLECTION_PERMISSIONS =
   "metabase/admin/permissions/LOAD_COLLECTION_PERMISSIONS";
 export const loadCollectionPermissions = createThunkAction(
   LOAD_COLLECTION_PERMISSIONS,
-  namespace => async (dispatch, getState) => {
-    if (!getState().admin.collectionPermissions) {
-      await dispatch(refreshCollectionPermissions(namespace));
-    }
+  namespace => async () => {
+    const params = namespace != null ? { namespace } : {};
+    return CollectionsApi.graph(params);
   },
 );
 
@@ -159,7 +138,7 @@ const dataPermissions = handleActions(
     [RESET_DATA_PERMISSIONS]: {
       next: (_state, { payload }) => null,
     },
-    [REFRESH_DATA_PERMISSIONS]: {
+    [LOAD_DATA_PERMISSIONS]: {
       next: (_state, { payload }) => payload.groups,
     },
     [UPDATE_DATA_PERMISSION]: {
@@ -217,7 +196,7 @@ const dataPermissions = handleActions(
 
 const originalDataPermissions = handleActions(
   {
-    [REFRESH_DATA_PERMISSIONS]: {
+    [LOAD_DATA_PERMISSIONS]: {
       next: (_state, { payload }) => payload.groups,
     },
     [SAVE_DATA_PERMISSIONS]: { next: (state, { payload }) => payload.groups },
@@ -228,7 +207,7 @@ const originalDataPermissions = handleActions(
 const dataPermissionsRevision = handleActions(
   {
     [RESET_DATA_PERMISSIONS]: { next: () => null },
-    [REFRESH_DATA_PERMISSIONS]: {
+    [LOAD_DATA_PERMISSIONS]: {
       next: (_state, { payload }) => payload.revision,
     },
     [SAVE_DATA_PERMISSIONS]: {
@@ -243,7 +222,7 @@ const collectionPermissions = handleActions(
     [RESET_COLLECTION_PERMISSIONS]: {
       next: _state => null,
     },
-    [REFRESH_COLLECTION_PERMISSIONS]: {
+    [LOAD_COLLECTION_PERMISSIONS]: {
       next: (_state, { payload }) => payload.groups,
     },
     [UPDATE_COLLECTION_PERMISSION]: {
@@ -269,7 +248,7 @@ const collectionPermissions = handleActions(
 
 const originalCollectionPermissions = handleActions(
   {
-    [REFRESH_COLLECTION_PERMISSIONS]: {
+    [LOAD_COLLECTION_PERMISSIONS]: {
       next: (_state, { payload }) => payload.groups,
     },
     [SAVE_COLLECTION_PERMISSIONS]: {
@@ -282,7 +261,7 @@ const originalCollectionPermissions = handleActions(
 const collectionPermissionsRevision = handleActions(
   {
     [RESET_COLLECTION_PERMISSIONS]: { next: () => null },
-    [REFRESH_COLLECTION_PERMISSIONS]: {
+    [LOAD_COLLECTION_PERMISSIONS]: {
       next: (_state, { payload }) => payload.revision,
     },
     [SAVE_COLLECTION_PERMISSIONS]: {

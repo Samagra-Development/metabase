@@ -18,12 +18,12 @@ import {
   loadCollectionPermissions,
 } from "../../permissions";
 import {
-  getSidebar,
-  getPermissionEditor,
-  getCollection,
-} from "../../selectors/collection-permissions-page";
-
-import { getIsDirty, getDiff } from "../../selectors/collection-permissions";
+  getCollectionsSidebar,
+  getCollectionsPermissionEditor,
+  getCollectionEntity,
+  getIsDirty,
+  getDiff,
+} from "../../selectors/collection-permissions";
 import { PermissionsSidebar } from "../../components/permissions-sidebar";
 import { PermissionsEditBar } from "../../components/permissions-page-layout/PermissionsEditBar";
 
@@ -68,7 +68,7 @@ function CollectionsPermissionsPage({
             diff={diff}
             isDirty={isDirty}
             onSave={savePermissions}
-            onCancel={loadPermissions}
+            onCancel={() => loadPermissions()}
           />
         )
       }
@@ -103,11 +103,11 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state, props) => {
   return {
-    sidebar: getSidebar(state, props),
-    permissionEditor: getPermissionEditor(state, props),
+    sidebar: getCollectionsSidebar(state, props),
+    permissionEditor: getCollectionsPermissionEditor(state, props),
     isDirty: getIsDirty(state, props),
     diff: getDiff(state, props),
-    collection: getCollection(state, props),
+    collection: getCollectionEntity(state, props),
   };
 };
 

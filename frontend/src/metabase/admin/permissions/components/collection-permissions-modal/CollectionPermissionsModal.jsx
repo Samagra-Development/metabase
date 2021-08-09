@@ -17,8 +17,11 @@ import Link from "metabase/components/Link";
 
 import { PermissionsTable } from "../permissions-table";
 import Groups from "metabase/entities/groups";
-import { getPermissionTable } from "../../selectors/collection-permissions-modal";
-import { getDiff, getIsDirty } from "../../selectors/collection-permissions";
+import {
+  getDiff,
+  getIsDirty,
+  getCollectionsPermissionEditor,
+} from "../../selectors/collection-permissions";
 import {
   initializeCollectionPermissions,
   updateCollectionPermission,
@@ -31,7 +34,7 @@ const getDefaultTitle = namespace =>
     : t`Permissions for this collection`;
 
 const CollectionPermissionsModal = ({
-  permissionTable,
+  permissionEditor,
   isDirty,
   onClose,
   namespace,
@@ -102,10 +105,9 @@ const CollectionPermissionsModal = ({
       ]}
     >
       <div className="relative" style={{ height: "50vh" }}>
-        {permissionTable && (
+        {permissionEditor && (
           <PermissionsTable
-            entities={permissionTable.entities}
-            columns={permissionTable.columns}
+            {...permissionEditor}
             onChange={handlePermissionChange}
           />
         )}
@@ -120,7 +122,10 @@ const getCollectionEntity = props =>
 const mapStateToProps = (state, props) => {
   const collectionId = Urls.extractCollectionId(props.params.slug);
   return {
-    permissionTable: getPermissionTable(state, props),
+    permissionEditor: getCollectionsPermissionEditor(state, {
+      namespace: props.namespace,
+      params: { collectionId },
+    }),
     collection: getCollectionEntity(props).selectors.getObject(state, {
       entityId: collectionId,
     }),
