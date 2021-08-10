@@ -5,9 +5,11 @@ import SidebarContent from "metabase/query_builder/components/SidebarContent";
 import QuestionActionButtons from "metabase/query_builder/components/QuestionActionButtons";
 import { ClampedDescription } from "metabase/query_builder/components/ClampedDescription";
 import {
-  SidebarContentContainer,
-  BorderedQuestionActivityTimeline,
+  PreventOverflowHeight,
+  SidebarPaddedContent,
 } from "./QuestionDetailsSidebarPanel.styled";
+import QuestionActivityTimeline from "metabase/query_builder/components/QuestionActivityTimeline";
+
 import { PLUGIN_MODERATION } from "metabase/plugins";
 
 const { QuestionModerationSection } = PLUGIN_MODERATION;
@@ -35,8 +37,8 @@ function QuestionDetailsSidebarPanel({
     : undefined;
 
   return (
-    <SidebarContent>
-      <SidebarContentContainer>
+    <PreventOverflowHeight>
+      <SidebarPaddedContent>
         <QuestionActionButtons canWrite={canWrite} onOpenModal={onOpenModal} />
         <ClampedDescription
           className="pb2"
@@ -45,8 +47,8 @@ function QuestionDetailsSidebarPanel({
           onEdit={onDescriptionEdit}
         />
         <QuestionModerationSection question={question} />
-        <BorderedQuestionActivityTimeline question={question} />
-      </SidebarContentContainer>
-    </SidebarContent>
+      </SidebarPaddedContent>
+      <QuestionActivityTimeline question={question} />
+    </PreventOverflowHeight>
   );
 }

@@ -4,4 +4,9 @@ export const ACTIONS = {
     icon: "verified",
     color: "brand",
   },
+  null: {
+    type: "null",
+    icon: "close",
+    color: "text-light",
+  },
 };
