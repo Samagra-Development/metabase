@@ -126,7 +126,7 @@ executors:
      working_directory: /home/circleci/metabase/metabase/
      docker:
        - image: metabase/ci:circleci-java-11-clj-1.10.3.929-07-27-2021-node-browsers
-       - image: circleci/mongo:4.0
+       - image: circleci/mongo:5.0
 
   presto-186:
     working_directory: /home/circleci/metabase/metabase/
@@ -196,11 +196,11 @@ executors:
     resource_class: large
 
 
-  fe-mongo-4:
+  fe-mongo-5:
     working_directory: /home/circleci/metabase/metabase/
     docker:
       - image: metabase/ci:circleci-java-11-clj-1.10.3.929-07-27-2021-node-browsers
-      - image: metabase/qa-databases:mongo-sample-4.0
+      - image: metabase/qa-databases:mongo-sample-5.0
 
   fe-postgres-12:
     working_directory: /home/circleci/metabase/metabase/
@@ -561,6 +561,9 @@ jobs:
             else
                echo '' > .CACHE-PREFIX
             fi
+      - run-yarn-command:
+          command-name: Create static visualization js bundle
+          command: build-static-viz
       - persist_to_workspace:
           root: /home/circleci/
           paths:
@@ -1014,7 +1017,8 @@ workflows:
           after-steps:
             - run:
                 name: Upload code coverage to codecov.io
-                command: bash <(curl -s https://codecov.io/bash)
+                command: bash <(curl -s https://codecov.io/bash) -F back-end
+
           skip-when-no-change: true
 
       - test-driver:
@@ -1022,6 +1026,12 @@ workflows:
           requires:
             - be-tests-ee
           driver: bigquery
+
+      - test-driver:
+          name: be-tests-bigquery-cloud-sdk-ee
+          requires:
+            - be-tests-ee
+          driver: bigquery-cloud-sdk
 
       - test-driver:
           name: be-tests-druid-ee
@@ -1248,7 +1258,7 @@ workflows:
           matrix:
             parameters:
               edition: ["ee", "oss"]
-              folder: ["admin", "binning", "collections", "dashboard", "dashboard-filters", "onboarding", "native", "native-filters", "question", "sharing", "smoketest", "visualizations"]
+              folder: ["admin", "binning", "collections", "dashboard", "dashboard-filters", "moderation", "native", "native-filters", "onboarding", "question", "sharing", "smoketest", "visualizations"]
           name: e2e-tests-<< matrix.folder >>-<< matrix.edition >>
           requires:
             - build-uberjar-<< matrix.edition >>
@@ -1256,10 +1266,10 @@ workflows:
           source-folder: << matrix.folder >>
 
       - fe-tests-cypress:
-          name: e2e-tests-mongo-4-<< matrix.edition >>
+          name: e2e-tests-mongo-5-<< matrix.edition >>
           requires:
             - build-uberjar-<< matrix.edition >>
-          e: fe-mongo-4
+          e: fe-mongo-5
           cypress-group: "mongo"
           source-folder: mongo
           qa-db: true

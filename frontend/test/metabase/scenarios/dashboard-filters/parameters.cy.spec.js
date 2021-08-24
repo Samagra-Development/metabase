@@ -57,7 +57,7 @@ describe("scenarios > dashboard > parameters", () => {
   });
 
   it("should search across multiple fields", () => {
-    cy.createDashboard("my dash");
+    cy.createDashboard({ name: "my dash" });
 
     cy.visit("/collection/root");
     cy.findByText("my dash").click();
@@ -65,7 +65,7 @@ describe("scenarios > dashboard > parameters", () => {
     // add the same question twice
     cy.icon("pencil").click();
 
-    cy.get(".DashboardHeader .Icon-add").click();
+    cy.get(".QueryBuilder-section .Icon-add").click();
     addQuestion("Orders, Count");
     addQuestion("Orders, Count");
 
@@ -117,14 +117,14 @@ describe("scenarios > dashboard > parameters", () => {
   });
 
   it("should query with a 2 argument parameter", () => {
-    cy.createDashboard("my dash");
+    cy.createDashboard({ name: "my dash" });
 
     cy.visit("/collection/root");
     cy.findByText("my dash").click();
 
     // add a question
     cy.icon("pencil").click();
-    cy.get(".DashboardHeader .Icon-add").click();
+    cy.get(".QueryBuilder-section .Icon-add").click();
     addQuestion("Orders, Count");
 
     // add a Number - Between filter
@@ -363,7 +363,7 @@ describe("scenarios > dashboard > parameters", () => {
       },
       display: "scalar",
     }).then(({ body: { id: card_id } }) => {
-      cy.createDashboard("16181D").then(({ body: { id: dashboard_id } }) => {
+      cy.createDashboard().then(({ body: { id: dashboard_id } }) => {
         // Add previously created question to the dashboard
         cy.request("POST", `/api/dashboard/${dashboard_id}/cards`, {
           cardId: card_id,
@@ -399,6 +399,49 @@ describe("scenarios > dashboard > parameters", () => {
     cy.icon("pencil").click();
     cy.findByText("Text contains").click();
     cy.findByText("No valid fields");
+  });
+
+  it("should allow for forcefully unset default parameters by clicking the parameter widget's removal button", () => {
+    cy.visit("/dashboard/1");
+
+    // Add a filter
+    cy.icon("pencil").click();
+    cy.icon("filter").click();
+    cy.findByText("Location").click();
+    cy.findByText("Dropdown").click();
+
+    // Link that filter to the card
+    cy.findByText("Select…").click();
+    popover().within(() => {
+      cy.findByText("City").click();
+    });
+
+    // Create a default value and save filter
+    cy.findByText("No default").click();
+    cy.findByPlaceholderText("Search by City")
+      .click()
+      .type("Boz");
+    cy.findByText("Bozeman").click();
+    cy.findByText("Add filter").click();
+    cy.get(".Button--primary")
+      .contains("Done")
+      .click();
+
+    // Save the dashboard and wait for the card query to rerun
+    cy.findByText("Save").click();
+    cy.findByText("You're editing this dashboard.").should("not.exist");
+    cy.findByText("Bozeman");
+    cy.findByText("No results!");
+
+    // Remove the filter and check that there are now results where there previously weren't
+    cy.icon("close").click();
+    cy.findByText("Bozeman").should("not.exist");
+    cy.findByText("39.72");
+
+    cy.log("**Unset filter should persist across a reload of the page**");
+    cy.reload();
+    cy.findByText("Bozeman").should("not.exist");
+    cy.findByText("39.72");
   });
 });
 

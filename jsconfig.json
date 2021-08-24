@@ -16,6 +16,7 @@
         "./enterprise/frontend/test/*"
       ]
     },
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "strictBindCallApply": true
   }
 }

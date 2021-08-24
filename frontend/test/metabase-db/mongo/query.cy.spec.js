@@ -97,9 +97,12 @@ function writeNativeMongoQuery() {
   cy.findByText("Native query").click();
   cy.findByText(MONGO_DB_NAME).click();
 
+  cy.findByText("Select a table").click();
+  cy.findByText("Orders").click();
+
   cy.get(".ace_content").type(`[ { $count: "Total" } ]`, {
     parseSpecialCharSequences: false,
   });
   cy.get(".NativeQueryEditor .Icon-play").click();
-  cy.findByText("18,760");
+  cy.findByText("42");
 }
