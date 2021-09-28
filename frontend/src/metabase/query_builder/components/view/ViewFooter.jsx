@@ -147,6 +147,7 @@ const ViewFooter = ({
           QueryDownloadWidget.shouldRender({ result, isResultDirty }) && (
             <QueryDownloadWidget
               key="download"
+
               className="mx1 hide sm-show"
               card={question.card()}
               result={result}

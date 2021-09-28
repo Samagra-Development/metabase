@@ -228,6 +228,7 @@ export default class DashCard extends Component {
                 className="m1 text-brand-hover text-light"
                 classNameClose="hover-child"
                 card={dashcard.card}
+                key='card'
                 params={params}
                 dashcardId={dashcard.id}
                 token={dashcard.dashboard_id}

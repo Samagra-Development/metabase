@@ -12,7 +12,7 @@ function appendSlug(path, slug) {
 
 export const activity = "/activity";
 
-export const exportFormats = ["csv", "xlsx", "json"];
+export const exportFormats = ["csv", "xlsx", "json", "pdf"];
 
 export const newQuestionFlow = () => "/question/new";
 

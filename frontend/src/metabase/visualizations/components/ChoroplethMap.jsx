@@ -250,6 +250,7 @@ export default class ChoroplethMap extends Component {
 
     const getFeatureValue = feature => valuesMap[getFeatureKey(feature)];
 
+  
     const rowByFeatureKey = new Map(rows.map(row => [getRowKey(row), row]));
 
     const getFeatureClickObject = (row, feature) =>
@@ -332,7 +333,7 @@ export default class ChoroplethMap extends Component {
       valuesMap[key] = (valuesMap[key] || 0) + value;
     }
     const domainSet = new Set(Object.values(valuesMap));
-    const domain = Array.from(domainSet);
+    const domain = Array.from(domainSet)
 
     const _heatMapColors = settings["map.colors"] || HEAT_MAP_COLORS;
     let heatMapColors = _heatMapColors.slice(-domain.length);
@@ -359,6 +360,7 @@ export default class ChoroplethMap extends Component {
       heatMapColors = region_conditions.rules.filter((g)=>!!g.start && !!g.end && !!g.color ).map((g)=>{
         return g.color;
       })
+    
     }
     
     if(region_conditions && region_conditions.mode === 'RANGE'){
@@ -378,7 +380,7 @@ export default class ChoroplethMap extends Component {
         });
       }
 
-      console.log(g,';;;;;')
+      
       
       groups = g.map((a, index)=>{
         const start = parseFloat(a.start);
@@ -407,23 +409,31 @@ export default class ChoroplethMap extends Component {
       g.unshift(list)
       groups = g;
     }
-    console.log(groups);
-    const colorScale = d3.scale
-      .threshold()
-      .domain(groupBoundaries)
-      .range(heatMapColors);
+    // const colorScale = d3.scale
+    //   .threshold()
+    //   .domain(groupBoundaries)
+    //   .range(heatMapColors);
 
+    const colorScale = (v)=>{
+      let c = -1;
+      groups.forEach((g, index)=>{
+        if(g.indexOf(v) > -1){
+          c = index;
+        }
+      })
+      return heatMapColors[c] || HEAT_MAP_ZERO_COLOR;
+    }
   
     const columnSettings = settings.column(cols[metricIndex]);
     const legendTitles = getLegendTitles(groups, columnSettings);
 
     const getColor = feature => {
-      
       const value = getFeatureValue(feature);
+    
       return value == null ? HEAT_MAP_ZERO_COLOR : colorScale(value);
     };
 
-  
+
     let aspectRatio;
     if (projection) {
       const [[minX, minY], [maxX, maxY]] = projectionFrame.map(projection);
@@ -433,7 +443,6 @@ export default class ChoroplethMap extends Component {
         (minimalBounds.getEast() - minimalBounds.getWest()) /
         (minimalBounds.getNorth() - minimalBounds.getSouth());
     }
-
     return (
       <ChartWithLegend
         className={className}

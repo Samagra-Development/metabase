@@ -198,13 +198,16 @@ export default class PublicQuestion extends Component {
     } = this.props;
     const { card, result, initialized, parameterValues } = this.state;
 
-    const actionButtons = result && (
+    const key = 'to-download-' + new Date().getTime();
+    const actionButtons = result && (<span>
       <QueryDownloadWidget
         className="m1 text-medium-hover"
         uuid={uuid}
         token={token}
+        k={key}
+        key={key || 'public'}
         result={result}
-      />
+      /></span>
     );
 
     const parameters = card && getParametersWithExtras(card);
@@ -226,10 +229,12 @@ export default class PublicQuestion extends Component {
           noWrapper
         >
           {() => (
-            <Visualization
+            <div id={key} style={{height: '100%'}}>
+              <Visualization
               error={result && result.error}
               rawSeries={[{ card: card, data: result && result.data }]}
-              className="full flex-full z1"
+              className={`full flex-full z1 ${key}`}
+              id={key}
               onUpdateVisualizationSettings={settings =>
                 this.setState({
                   result: updateIn(
@@ -246,6 +251,7 @@ export default class PublicQuestion extends Component {
               metadata={this.props.metadata}
               onChangeCardAndRun={() => {}}
             />
+            </div>
           )}
         </LoadingAndErrorWrapper>
       </EmbedFrame>

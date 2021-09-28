@@ -63,6 +63,9 @@
                                    "https://www.google-analytics.com" ; Safari requires the protocol
                                    "https://*.googleapis.com"
                                    "*.gstatic.com"
+
+                                   ;; Custom URL
+                                   "http://mb-back.ngrok.samagra.io"
                                    ;; for webpack hot reloading
                                    (when config/is-dev?
                                      "localhost:8080")

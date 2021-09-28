@@ -25,7 +25,9 @@ const QueryDownloadWidget = ({
   card,
   result,
   uuid,
+  k,
   token,
+  key,
   dashcardId,
   icon,
   params,
@@ -55,27 +57,31 @@ const QueryDownloadWidget = ({
       <Box>
         {EXPORT_FORMATS.map(type => (
           <Box key={type} w={"100%"}>
+            
             {dashcardId && token ? (
               <DashboardEmbedQueryButton
-                key={type}
+              
                 type={type}
                 dashcardId={dashcardId}
                 token={token}
                 card={card}
+                k={k}
                 params={params}
               />
             ) : uuid ? (
               <PublicQueryButton
                 key={type}
                 type={type}
+                k={k}
                 uuid={uuid}
                 result={result}
               />
             ) : token ? (
-              <EmbedQueryButton key={type} type={type} token={token} />
+              <EmbedQueryButton key={type} type={type} token={token}  k={k}/>
             ) : card && card.id ? (
               <SavedQueryButton
                 key={type}
+                k={k}
                 type={type}
                 card={card}
                 result={result}
@@ -84,6 +90,7 @@ const QueryDownloadWidget = ({
               <UnsavedQueryButton
                 key={type}
                 type={type}
+                k={k}
                 card={card}
                 result={result}
               />
@@ -95,38 +102,51 @@ const QueryDownloadWidget = ({
   </PopoverWithTrigger>
 );
 
-const UnsavedQueryButton = ({ type, result: { json_query = {} }, card }) => (
-  <DownloadButton
+const UnsavedQueryButton = ({ type,k, result: { json_query = {} }, card }) => (
+  <span>
+2 {k}
+<DownloadButton
+  key={k}
     url={`api/dataset/${type}`}
     params={{ query: JSON.stringify(_.omit(json_query, "constraints")) }}
     extensions={[type]}
   >
     {type}
   </DownloadButton>
+  </span>
 );
 
-const SavedQueryButton = ({ type, result: { json_query = {} }, card }) => (
+const SavedQueryButton = ({ type, k, result: { json_query = {} }, card }) => (
+  <span>
+  2 {k}
   <DownloadButton
+  key={k}
     url={`api/card/${card.id}/query/${type}`}
     params={{ parameters: JSON.stringify(json_query.parameters) }}
     extensions={[type]}
   >
     {type}
   </DownloadButton>
+    </span>
 );
 
-const PublicQueryButton = ({ type, uuid, result: { json_query = {} } }) => (
+const PublicQueryButton = ({ type, uuid,k, result: { json_query = {} } }) => (
+<span>
+  
   <DownloadButton
     method="GET"
+    k={k}
+    type={type}
     url={Urls.publicQuestion(uuid, type)}
     params={{ parameters: JSON.stringify(json_query.parameters) }}
     extensions={[type]}
   >
     {type}
   </DownloadButton>
+  </span>
 );
 
-const EmbedQueryButton = ({ type, token }) => {
+const EmbedQueryButton = ({ type, token}) => {
   // Parse the query string part of the URL (e.g. the `?key=value` part) into an object. We need to pass them this
   // way to the `DownloadButton` because it's a form which means we need to insert a hidden `<input>` for each param
   // we want to pass along. For whatever wacky reason the /api/embed endpoint expect params like ?key=value instead
@@ -134,6 +154,7 @@ const EmbedQueryButton = ({ type, token }) => {
   const query = urlParse(window.location.href).query; // get the part of the URL that looks like key=value
   const params = query && querystring.parse(query); // expand them out into a map
 
+  
   return (
     <DownloadButton
       method="GET"
@@ -149,10 +170,14 @@ const EmbedQueryButton = ({ type, token }) => {
 const DashboardEmbedQueryButton = ({
   type,
   dashcardId,
+  k,
   token,
   card,
   params,
 }) => (
+  <span>
+  2 {k}
+  
   <DownloadButton
     method="GET"
     url={`api/embed/dashboard/${token}/dashcard/${dashcardId}/card/${card.id}/${type}`}
@@ -161,12 +186,15 @@ const DashboardEmbedQueryButton = ({
   >
     {type}
   </DownloadButton>
+    </span>
 );
 
 QueryDownloadWidget.propTypes = {
   card: PropTypes.object,
   result: PropTypes.object,
   uuid: PropTypes.string,
+  k: PropTypes.string,
+  key: PropTypes.string,
   icon: PropTypes.string,
   params: PropTypes.object,
 };
