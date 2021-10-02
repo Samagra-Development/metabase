@@ -187,7 +187,7 @@ export default class View extends React.Component {
       ) : null;
 
     const isSidebarOpen = leftSideBar || rightSideBar;
-
+    const key = "to-download-" + new Date().getTime();
     return (
       <div className={fitClassNames}>
         <div className={cx("QueryBuilder flex flex-column bg-white spread")}>
@@ -279,22 +279,25 @@ export default class View extends React.Component {
                 style={{ flexGrow: 1 }}
                 enabled={!isLiveResizable}
               >
-                <QueryVisualization
-                  {...this.props}
-                  onAddSeries={onAddSeries}
-                  onEditSeries={onEditSeries}
-                  onRemoveSeries={onRemoveSeries}
-                  onEditBreakout={onEditBreakout}
-                  noHeader
-                  className="spread"
-                />
+                <div id={key} style={{height: '100%'}}>
+                  <QueryVisualization
+                    {...this.props}
+                    onAddSeries={onAddSeries}
+                    onEditSeries={onEditSeries}
+                    onRemoveSeries={onRemoveSeries}
+                    onEditBreakout={onEditBreakout}
+                    noHeader
+                    className="spread"
+                  />
+                </div>
+
               </DebouncedFrame>
 
               {ModeFooter && (
                 <ModeFooter {...this.props} className="flex-no-shrink" />
               )}
 
-              <ViewFooter {...this.props} className="flex-no-shrink" />
+              <ViewFooter k={key} {...this.props} className="flex-no-shrink" />
             </div>
 
             <ViewSidebar right isOpen={!!rightSideBar}>

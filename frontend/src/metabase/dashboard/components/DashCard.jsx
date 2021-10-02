@@ -166,6 +166,7 @@ export default class DashCard extends Component {
     const isEditingDashboardLayout =
       isEditing && clickBehaviorSidebarDashcard == null && !isEditingParameter;
 
+      console.log('----------------======');
     return (
       <div
         className={cx(
@@ -228,7 +229,7 @@ export default class DashCard extends Component {
                 className="m1 text-brand-hover text-light"
                 classNameClose="hover-child"
                 card={dashcard.card}
-                key='card'
+                key="card"
                 params={params}
                 dashcardId={dashcard.id}
                 token={dashcard.dashboard_id}

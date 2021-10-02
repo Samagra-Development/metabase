@@ -32,6 +32,7 @@ const QueryDownloadWidget = ({
   icon,
   params,
 }) => (
+  
   <PopoverWithTrigger
     triggerElement={
       <Tooltip tooltip={t`Download full results`}>
@@ -57,10 +58,8 @@ const QueryDownloadWidget = ({
       <Box>
         {EXPORT_FORMATS.map(type => (
           <Box key={type} w={"100%"}>
-            
             {dashcardId && token ? (
               <DashboardEmbedQueryButton
-              
                 type={type}
                 dashcardId={dashcardId}
                 token={token}
@@ -77,7 +76,7 @@ const QueryDownloadWidget = ({
                 result={result}
               />
             ) : token ? (
-              <EmbedQueryButton key={type} type={type} token={token}  k={k}/>
+              <EmbedQueryButton key={type} type={type} token={token} k={k} />
             ) : card && card.id ? (
               <SavedQueryButton
                 key={type}
@@ -102,51 +101,53 @@ const QueryDownloadWidget = ({
   </PopoverWithTrigger>
 );
 
-const UnsavedQueryButton = ({ type,k, result: { json_query = {} }, card }) => (
+const UnsavedQueryButton = ({ type, k, result: { json_query = {} }, card }) => (
   <span>
-2 {k}
-<DownloadButton
-  key={k}
-    url={`api/dataset/${type}`}
-    params={{ query: JSON.stringify(_.omit(json_query, "constraints")) }}
-    extensions={[type]}
-  >
-    {type}
-  </DownloadButton>
+
+    <DownloadButton
+      key={k}
+      k={k}
+      type={type}
+      url={`api/dataset/${type}`}
+      params={{ query: JSON.stringify(_.omit(json_query, "constraints")) }}
+      extensions={[type]}
+    >
+      {type}
+    </DownloadButton>
   </span>
 );
 
 const SavedQueryButton = ({ type, k, result: { json_query = {} }, card }) => (
   <span>
-  2 {k}
-  <DownloadButton
-  key={k}
-    url={`api/card/${card.id}/query/${type}`}
-    params={{ parameters: JSON.stringify(json_query.parameters) }}
-    extensions={[type]}
-  >
-    {type}
-  </DownloadButton>
-    </span>
-);
-
-const PublicQueryButton = ({ type, uuid,k, result: { json_query = {} } }) => (
-<span>
-  
-  <DownloadButton
-    method="GET"
-    k={k}
-    type={type}
-    url={Urls.publicQuestion(uuid, type)}
-    params={{ parameters: JSON.stringify(json_query.parameters) }}
-    extensions={[type]}
-  >
-    {type}
-  </DownloadButton>
+    <DownloadButton
+      key={k}
+      k={k}
+      type={type}
+      url={`api/card/${card.id}/query/${type}`}
+      params={{ parameters: JSON.stringify(json_query.parameters) }}
+      extensions={[type]}
+    >
+      {type}
+    </DownloadButton>
   </span>
 );
 
-const EmbedQueryButton = ({ type, token}) => {
+const PublicQueryButton = ({ type, uuid, k, result: { json_query = {} } }) => (
+  <span>
+    <DownloadButton
+      method="GET"
+      k={k}
+      type={type}
+      url={Urls.publicQuestion(uuid, type)}
+      params={{ parameters: JSON.stringify(json_query.parameters) }}
+      extensions={[type]}
+    >
+      {type}
+    </DownloadButton>
+  </span>
+);
+
+const EmbedQueryButton = ({ type,k, token }) => {
   // Parse the query string part of the URL (e.g. the `?key=value` part) into an object. We need to pass them this
   // way to the `DownloadButton` because it's a form which means we need to insert a hidden `<input>` for each param
   // we want to pass along. For whatever wacky reason the /api/embed endpoint expect params like ?key=value instead
@@ -154,12 +155,13 @@ const EmbedQueryButton = ({ type, token}) => {
   const query = urlParse(window.location.href).query; // get the part of the URL that looks like key=value
   const params = query && querystring.parse(query); // expand them out into a map
 
-  
   return (
     <DownloadButton
       method="GET"
       url={Urls.embedCard(token, type)}
       params={params}
+      type={type}
+      k={k}
       extensions={[type]}
     >
       {type}
@@ -176,17 +178,18 @@ const DashboardEmbedQueryButton = ({
   params,
 }) => (
   <span>
-  2 {k}
-  
-  <DownloadButton
-    method="GET"
-    url={`api/embed/dashboard/${token}/dashcard/${dashcardId}/card/${card.id}/${type}`}
-    extensions={[type]}
-    params={params}
-  >
-    {type}
-  </DownloadButton>
-    </span>
+    {k}
+    <DownloadButton
+      method="GET"
+      type={type}
+      k={k}
+      url={`api/embed/dashboard/${token}/dashcard/${dashcardId}/card/${card.id}/${type}`}
+      extensions={[type]}
+      params={params}
+    >
+      {type}
+    </DownloadButton>
+  </span>
 );
 
 QueryDownloadWidget.propTypes = {

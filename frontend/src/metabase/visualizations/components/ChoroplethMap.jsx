@@ -123,24 +123,24 @@ export default class ChoroplethMap extends Component {
     this.state = {
       geoJson: null,
       geoJsonPath: null,
-      mode: 'CUSTOM', //COLOR, GROUP, CUSTOM,
-      groupConfigurations:[
+      mode: "CUSTOM", //COLOR, GROUP, CUSTOM,
+      groupConfigurations: [
         {
           start: 0,
           end: 41,
-          color: '#FF0000'
+          color: "#FF0000",
         },
         {
           start: 42,
           end: 69,
-          color: '#00FF00'
+          color: "#00FF00",
         },
         {
           start: 70,
           end: 194,
-          color: '#0000FF'
-        }
-      ]
+          color: "#0000FF",
+        },
+      ],
     };
   }
 
@@ -181,7 +181,7 @@ export default class ChoroplethMap extends Component {
 
   render() {
     const details = this._getDetails(this.props);
-    
+
     if (!details) {
       return <div>{t`unknown map`}</div>;
     }
@@ -196,9 +196,9 @@ export default class ChoroplethMap extends Component {
       onVisualizationClick,
       settings,
     } = this.props;
-    const { geoJson, minimalBounds, groupConfigurations,mode  } = this.state;
-    const {'map.region_conditions': region_conditions } = settings;
-    
+    const { geoJson, minimalBounds, groupConfigurations, mode } = this.state;
+    const { "map.region_conditions": region_conditions } = settings;
+
     // special case builtin maps to use legacy choropleth map
     let projection, projectionFrame;
     // projectionFrame is the lng/lat of the top left and bottom right corners
@@ -222,7 +222,6 @@ export default class ChoroplethMap extends Component {
         </div>
       );
     }
-
 
     const [
       {
@@ -250,7 +249,6 @@ export default class ChoroplethMap extends Component {
 
     const getFeatureValue = feature => valuesMap[getFeatureKey(feature)];
 
-  
     const rowByFeatureKey = new Map(rows.map(row => [getRowKey(row), row]));
 
     const getFeatureClickObject = (row, feature) =>
@@ -333,7 +331,7 @@ export default class ChoroplethMap extends Component {
       valuesMap[key] = (valuesMap[key] || 0) + value;
     }
     const domainSet = new Set(Object.values(valuesMap));
-    const domain = Array.from(domainSet)
+    const domain = Array.from(domainSet);
 
     const _heatMapColors = settings["map.colors"] || HEAT_MAP_COLORS;
     let heatMapColors = _heatMapColors.slice(-domain.length);
@@ -344,69 +342,81 @@ export default class ChoroplethMap extends Component {
     domain.sort(function(a, b) {
       return a - b;
     });
-    if(region_conditions && region_conditions.mode === 'CUSTOM'){
-      const g = region_conditions.rules.filter((g)=>!!g.start && !!g.end && !!g.color );
-      groups = g.map((a, index)=>{
+    if (region_conditions && region_conditions.mode === "CUSTOM") {
+      const g = region_conditions.rules.filter(
+        g => !!g.start && !!g.end && !!g.color,
+      );
+      groups = g.map((a, index) => {
         const start = parseFloat(a.start);
         const end = parseFloat(a.end);
-        const set  = [];
-        domain.forEach((d, index)=>{
-          if((d>= start) && ((d=== end && (index === domain.length-1)) || (d< end))){
+        const set = [];
+        domain.forEach((d, index) => {
+          if (
+            d >= start &&
+            ((d === end && index === domain.length - 1) || d < end)
+          ) {
             set.push(d);
           }
-        })
+        });
         return set;
-      })
-      heatMapColors = region_conditions.rules.filter((g)=>!!g.start && !!g.end && !!g.color ).map((g)=>{
-        return g.color;
-      })
-    
+      });
+      heatMapColors = region_conditions.rules
+        .filter(g => !!g.start && !!g.end && !!g.color)
+        .map(g => {
+          return g.color;
+        });
     }
-    
-    if(region_conditions && region_conditions.mode === 'RANGE'){
-      heatMapColors = region_conditions.rules.filter((g)=>!!g.color ).map((g)=>{
-        return g.color;
-      }) 
-    
-      const g =[];
+
+    if (region_conditions && region_conditions.mode === "RANGE") {
+      heatMapColors = region_conditions.rules
+        .filter(g => !!g.color)
+        .map(g => {
+          return g.color;
+        });
+
+      const g = [];
       const START = domain[0];
       const END = domain[domain.length - 1];
-      for(let i=0;i<heatMapColors.length;i++){
-        const start = g[0] ? g[g.length-1].end : START;
-        const end = heatMapColors[i+1] ?  (start + Math.ceil((END - START)/heatMapColors.length)) : END;
+      for (let i = 0; i < heatMapColors.length; i++) {
+        const start = g[0] ? g[g.length - 1].end : START;
+        const end = heatMapColors[i + 1]
+          ? start + Math.ceil((END - START) / heatMapColors.length)
+          : END;
         g.push({
           start,
-          end
+          end,
         });
       }
 
-      
-      
-      groups = g.map((a, index)=>{
+      groups = g.map((a, index) => {
         const start = parseFloat(a.start);
         const end = parseFloat(a.end);
-        const set  = [];
-        domain.forEach((d, index)=>{
-          if((d>= start) && ((d=== end && (index === domain.length-1)) || (d< end))){
+        const set = [];
+        domain.forEach((d, index) => {
+          if (
+            d >= start &&
+            ((d === end && index === domain.length - 1) || d < end)
+          ) {
             set.push(d);
           }
-
-        })
+        });
         return set;
-      })
+      });
     }
-    if(region_conditions && region_conditions.mode === 'COLOR'){
-      heatMapColors = region_conditions.rules.filter((g)=>!!g.color ).map((g)=>{
-        return g.color;
-      })
-      
+    if (region_conditions && region_conditions.mode === "COLOR") {
+      heatMapColors = region_conditions.rules
+        .filter(g => !!g.color)
+        .map(g => {
+          return g.color;
+        });
+
       const list = JSON.parse(JSON.stringify(domain));
       const g = [];
-      const partsIndex = Math.ceil(list.length / heatMapColors.length)
-      for(let i =0;i<heatMapColors.length-1 ; i++){
-          g.unshift(list.splice(-partsIndex));
+      const partsIndex = Math.ceil(list.length / heatMapColors.length);
+      for (let i = 0; i < heatMapColors.length - 1; i++) {
+        g.unshift(list.splice(-partsIndex));
       }
-      g.unshift(list)
+      g.unshift(list);
       groups = g;
     }
     // const colorScale = d3.scale
@@ -414,25 +424,24 @@ export default class ChoroplethMap extends Component {
     //   .domain(groupBoundaries)
     //   .range(heatMapColors);
 
-    const colorScale = (v)=>{
+    const colorScale = v => {
       let c = -1;
-      groups.forEach((g, index)=>{
-        if(g.indexOf(v) > -1){
+      groups.forEach((g, index) => {
+        if (g.indexOf(v) > -1) {
           c = index;
         }
-      })
+      });
       return heatMapColors[c] || HEAT_MAP_ZERO_COLOR;
-    }
-  
+    };
+
     const columnSettings = settings.column(cols[metricIndex]);
     const legendTitles = getLegendTitles(groups, columnSettings);
 
     const getColor = feature => {
       const value = getFeatureValue(feature);
-    
+
       return value == null ? HEAT_MAP_ZERO_COLOR : colorScale(value);
     };
-
 
     let aspectRatio;
     if (projection) {

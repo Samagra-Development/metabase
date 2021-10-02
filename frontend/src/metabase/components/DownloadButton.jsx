@@ -2,8 +2,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Box, Flex } from "grid-styled";
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 import { color } from "metabase/lib/colors";
 import { extractQueryParams } from "metabase/lib/urls";
@@ -23,23 +23,29 @@ function colorForType(type) {
       return color("brand");
   }
 }
-async function convert(key){
+async function convert(key) {
   const input = document.getElementById(key);
-  
- html2canvas(input)
-   .then(async (canvas) => {
-     let imgData = canvas.toDataURL('image/png');
-     //imgData = await resizedataURL(imgData, 100, 100)
-     
-     const pdf = new jsPDF();
-     pdf.addImage(imgData, 'JPEG', 0, 0);
-     pdf.output('dataurlnewwindow');
-     pdf.save("preview.pdf");
-   }).catch((e)=>{
-     console.log(e);
-   })
-}
+  html2canvas(input)
+    .then(async canvas => {
+      var imgWidth = 210;
+      var pageHeight = 295;
+      var imgHeight = canvas.height * imgWidth / canvas.width;
+      var heightLeft = imgHeight;
 
+
+      let imgData = canvas.toDataURL("image/png");
+      //imgData = await resizedataURL(imgData, 100, 100)
+
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
+      pdf.autoPrint();
+      pdf.output("dataurlnewwindow");
+      pdf.save("preview.pdf");
+    })
+    .catch(e => {
+      console.log(e);
+    });
+}
 
 const DownloadButton = ({
   children,
@@ -50,10 +56,10 @@ const DownloadButton = ({
   params,
   extensions,
   ...props
-}) => (
-  type === 'pdf' ?
-  <Box>
-   
+}) =>
+  type === "pdf" ? (
+    <Box>
+      {console.log('444444444', k)}
       {params && extractQueryParams(params).map(getInput)}
       <Flex
         is="button"
@@ -61,7 +67,7 @@ const DownloadButton = ({
         align="center"
         p={1}
         my={1}
-        onClick={()=>{
+        onClick={() => {
           convert(k);
         }}
         {...props}
@@ -69,32 +75,38 @@ const DownloadButton = ({
         <Icon name={children} size={32} mr={1} color={colorForType(children)} />
         <Label my={0}>.{children}</Label>
       </Flex>
-  </Box> : 
-  <Box>
-    <form method={method} action={url}>
-      {params && extractQueryParams(params).map(getInput)}
-      <Flex
-        is="button"
-        className="text-white-hover bg-brand-hover rounded cursor-pointer full hover-parent hover--inherit"
-        align="center"
-        p={1}
-        my={1}
-        onClick={e => {
-          if (window.OSX) {
-            // prevent form from being submitted normally
-            e.preventDefault();
-            // download using the API provided by the OS X app
-            window.OSX.download(method, url, params, extensions);
-          }
-        }}
-        {...props}
-      >
-        <Icon name={children} size={32} mr={1} color={colorForType(children)} />
-        <Label my={0}>.{children}</Label>
-      </Flex>
-    </form>
-  </Box>
-);
+    </Box>
+  ) : (
+    <Box>
+      <form method={method} action={url}>
+        {params && extractQueryParams(params).map(getInput)}
+        <Flex
+          is="button"
+          className="text-white-hover bg-brand-hover rounded cursor-pointer full hover-parent hover--inherit"
+          align="center"
+          p={1}
+          my={1}
+          onClick={e => {
+            if (window.OSX) {
+              // prevent form from being submitted normally
+              e.preventDefault();
+              // download using the API provided by the OS X app
+              window.OSX.download(method, url, params, extensions);
+            }
+          }}
+          {...props}
+        >
+          <Icon
+            name={children}
+            size={32}
+            mr={1}
+            color={colorForType(children)}
+          />
+          <Label my={0}>.{children}</Label>
+        </Flex>
+      </form>
+    </Box>
+  );
 
 const getInput = ([name, value]) => (
   <input type="hidden" name={name} value={value} />
@@ -103,8 +115,8 @@ const getInput = ([name, value]) => (
 DownloadButton.propTypes = {
   url: PropTypes.string.isRequired,
   method: PropTypes.string,
-  type:PropTypes.string,
-  k:PropTypes.string,
+  type: PropTypes.string,
+  k: PropTypes.string,
   params: PropTypes.object,
   extensions: PropTypes.array,
 };

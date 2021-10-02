@@ -39,6 +39,7 @@ const ViewFooter = ({
   isShowingChartSettingsSidebar,
   isShowingRawTable,
   onOpenChartType,
+  k,
   onOpenModal,
   onCloseChartType,
   onOpenChartSettings,
@@ -64,6 +65,7 @@ const ViewFooter = ({
     return null;
   }
 
+  console.log('1112121', k);
   return (
     <ViewSection className={cx(className, "text-medium border-top")} py={1}>
       <ButtonBar
@@ -147,7 +149,7 @@ const ViewFooter = ({
           QueryDownloadWidget.shouldRender({ result, isResultDirty }) && (
             <QueryDownloadWidget
               key="download"
-
+              k={k}
               className="mx1 hide sm-show"
               card={question.card()}
               result={result}
