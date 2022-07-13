@@ -1,6 +1,6 @@
 ### [Overview](overview.md)
 
-- Architecture
+- [Architecture](architecture.md)
 - [API Overview](api-overview.md)
 - [Core Features & Pre-requisites](features-and-prerequisites.md)
 - [How to install Metabase?](installation.md)
