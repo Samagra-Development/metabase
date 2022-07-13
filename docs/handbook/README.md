@@ -16,9 +16,9 @@
 - [What are the additional features that we contributed?](additional-features.md) 
 - [How to embed a dashboard or a visualization?](embed-dashboard.md)
 
-### [Contribution Guidelines](contribution-guidelines.md)
-We love your input! We want to make contributing to this project as easy and transparent as possible. Make sure to read our Guidelines before making any changes!
+### Contribution Guidelines
+We love your input! We want to make contributing to this project as easy and transparent as possible. [Make sure to read our Guidelines](contribution-guidelines.md) before making any changes!
 
-### [FAQs](faq.md)
+### FAQs
 
-Listed here are some of the most commonly asked questions about Metabase
+Listed [here](faq.md) are some of the most commonly asked questions about Metabase
