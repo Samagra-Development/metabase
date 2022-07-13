@@ -61,7 +61,7 @@ git rebase master
 # it may be necessary to resolve merge conflicts here
 # if you need to update the existing pull request, you should do a 'force' push
 git push origin HEAD
-``
+```
 
 ## Your PR is merged!
 
