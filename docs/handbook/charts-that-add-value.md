@@ -27,6 +27,7 @@ A bar chart or bar graph is a chart or graph that presents categorical data with
 Although the Metabase graphs can be plotted vertically (bars standing up) or horizontally (bars laying flat from left to right), the most usual type of bar graph is vertical.
 
 >Ratings data with a Bar chart
+
 ![bar chart](/docs/images/BarChart.png)
 
 ### Row Chart
@@ -47,6 +48,16 @@ The Metabase columns are color coded so you can quickly tell positive from negat
 
 ![waterfall chart](/docs/images/Waterfall.png)
 
+
+### Bubble Chart
+
+A bubble chart is commonly used to visualize relationships between three or more numeric variables. Each bubble in a chart represents a single data point.
+
+Bubble chart is a data visualization method that displays multiple circles in a two-dimensional plot. It is a very similar to the scatter chart, except data points are replaced with bubbles.
+
+>Following bubble chart shows data which takes in consideration the price and rating of a product
+
+![bubble](/docs/images/BubbleChart.png)
 
 
 
