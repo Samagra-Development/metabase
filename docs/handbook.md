@@ -15,7 +15,7 @@
 - How to embed a dashboard or a visualization?
 
 ### [Contribution Guidelines]()
-
+We love your input! We want to make contributing to this project as easy and transparent as possible. Make sure to read our Guidelines before making any changes!
 
 ### [FAQs](./faq.md)
 
