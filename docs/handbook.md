@@ -14,7 +14,7 @@
 - What are the additional features that we contributed? 
 - How to embed a dashboard or a visualization?
 
-### Contribution Guidelines
+### [Contribution Guidelines]()
 
 
 ### [FAQs](./faq.md)
