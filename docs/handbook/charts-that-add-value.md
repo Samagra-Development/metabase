@@ -26,7 +26,7 @@ A bar chart or bar graph is a chart or graph that presents categorical data with
 
 Although the Metabase graphs can be plotted vertically (bars standing up) or horizontally (bars laying flat from left to right), the most usual type of bar graph is vertical.
 
->Ratings data with a Bar chart
+>Ratings data with a Bar chart 
 
 ![bar chart](/docs/images/BarChart.png)
 
