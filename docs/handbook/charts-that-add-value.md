@@ -26,5 +26,27 @@ A bar chart or bar graph is a chart or graph that presents categorical data with
 
 Although the Metabase graphs can be plotted vertically (bars standing up) or horizontally (bars laying flat from left to right), the most usual type of bar graph is vertical.
 
+>Ratings data with a Bar chart
 ![bar chart](/docs/images/BarChart.png)
+
+### Row Chart
+
+A row chart is a variation on a bar chart, where data is visualized with horizontal bars rather than vertical.
+
+>Here is a row chart which displays data w.r.t price and rating of a product
+
+![row chart](/docs/images/RowChart.png)
+
+### Waterfall Chart
+
+A waterfall chart shows a running total as values are added or subtracted. It's useful for understanding how an initial value (for example, net income) is affected by a series of positive and negative values.
+
+The Metabase columns are color coded so you can quickly tell positive from negative numbers.
+
+>Following waterfall chart displays data w.r.t Category and Rating of a product
+
+![waterfall chart](/docs/images/Waterfall.png)
+
+
+
 
