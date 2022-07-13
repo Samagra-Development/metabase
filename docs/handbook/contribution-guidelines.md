@@ -1,3 +1,11 @@
+## Welcome!
+
+Thank you for investing your time in contributing to our project! Any contribution you make will be very valuable to the Metabase Community ✨.
+
+Read our Code of Conduct to keep our community approachable and respectable.
+
+In this guide you will get an overview of the contribution workflow from opening an issue, creating a PR, reviewing, and merging the PR.
+
 ## Getting Started
 
 To get an overview of the project, take a look at our [README](/README.md). Here are some resources to help you get started with open source contributions:
