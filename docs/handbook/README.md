@@ -1,10 +1,10 @@
 ### [Overview](./users-guide/01-what-is-metabase.md)
 
 - Architecture
-- [API Overview](https://www.metabase.com/docs/latest/api-documentation.html)
+- [API Overview](/docs/api-documentation.md)
 - [Core Features](/README.md#features) & [Pre-requisites](./users-guide/02-database-basics.md)
 - [How to install Metabase?](/README.md#installation)
-- [How to connect a database?](https://www.metabase.com/docs/latest/operations-guide/migrating-from-h2.html)
+- [How to connect a database?](/docs/operations-guide/configuring-application-database.md)
 
 ### [How to create and design Dashboards?](./users-guide/07-dashboards.md)
 
