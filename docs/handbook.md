@@ -17,4 +17,6 @@
 ### Contribution Guidelines
 
 
-### FAQs
+### [FAQs](./faq.md)
+
+Listed here are some of the most commonly asked questions about Metabase
