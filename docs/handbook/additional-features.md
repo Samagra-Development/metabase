@@ -5,18 +5,25 @@
 Map visualization is used to analyze and display the geographically related data and present it in the form of maps. This kind of data expression is clearer and more intuitive. When we define Custom colors to some particular Map regions, we can visually see the distribution or proportion of data in each region. 
 
 Let's say there are 3 kinds of divisions for a Map. Assuming X is data and Y is geo region => The map is divided into the following way:
+
 For ranges of X => (X1 - X2) - X12, (X2 -X3 ) - X23 and so on.
+
 Similarly for ranges of Y => Y12, Y23, ....
+
 A third entity called color (C) => C12, C23 ...
 
 **Sample data**
 
 Y - States of India i.e. Maharashtra, Punjab, etc.
+
 X - Corresponding values for each Y variable i.e. population of 3Cr, 4Cr, etc.
+
 C - Corresponding color
 
 X1 - X2 : 0-3Cr
+
 Y12 : All states with a population of 0-3Cr
+
 C12 : Color hex code
 
 Note - Y12 is the count of regions in X12.
