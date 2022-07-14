@@ -20,14 +20,6 @@ X - Corresponding values for each Y variable i.e. population of 3Cr, 4Cr, etc.
 
 C - Corresponding color
 
-X1 - X2 : 0-3Cr
-
-Y12 : All states with a population of 0-3Cr
-
-C12 : Color hex code
-
-Note - Y12 is the count of regions in X12.
-
 **Possible Configurations**
 
 Equally divided in terms of X ranges i.e. X12 = X23 = X34 ...

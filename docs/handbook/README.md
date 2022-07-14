@@ -30,10 +30,10 @@ Connect one or more databases to Metabase by following these instructions. This 
 
 - [Create and design Dashboards](dashboards.md)
 - [How to use databases safely](use-databases-safely.md)
-- [What are some charts that add more value?](charts-that-add-value.md)
+- [Frequenly used Charts](frequently-used-charts.md)
 - [How to design mobile responsive dashboards?](mobile-responsive-dashboards.md)
 - [What are the additional features that we contributed?](additional-features.md) 
-- [How to embed a dashboard or a visualization?](embed-dashboard.md)
+- [How to embed a dashboard or a visualization?](https://www.metabase.com/learn/embedding/embedding-charts-and-dashboards)
 
 ### [Contribution Guidelines](contribution-guidelines.md)
 We love your input! We want to make contributing to this project as easy and transparent as possible. Make sure to read our Guidelines before making any changes!
