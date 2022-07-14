@@ -24,7 +24,7 @@ Follow these steps to install Metabase environment onto your local machine.
 
 ### [How to connect a database?](https://www.metabase.com/docs/latest/administration-guide/01-managing-databases.html#adding-a-database-connection)
 
-Connect one or more databases to Metabase by following these instructions. This section also details the list of databases supported by the Metabase community.
+Connect one or more databases to Metabase by following these instructions. This section also details a list of databases supported by the Metabase community.
 
 ## How to create and design Dashboards?
 
