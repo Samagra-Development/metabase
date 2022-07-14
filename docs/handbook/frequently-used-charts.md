@@ -1,4 +1,4 @@
-## Charts
+## Frequently Used Charts
 
 Charts helps our users get a clearer picture of large amounts of data and how they compare with other data. These Charts convey information quickly and easily to the user. A Metabase dashboard contains a set of Charts and Data tables brought together which you can share with your team.
 
