@@ -1,20 +1,10 @@
-## Overview
-
-- Overview of Metabase
-- Architecture
-- API Overview
-- Core Features 
-- Pre-requisites
-- How to install Metabase?
-- How to connect a database?
-
 ### [Overview of Metabase](overview.md)
 
 A brief overview which explains the need of Metabase, various concepts and  features, A short exploration through the Metabase user interface and how you can utilize this interface to your own advantage.
 
 ### [Architecture](architecture.md)
 
-This section provides a comprehensive architectural overview of the Metabase system, using a number of different functional blocks to depict different aspects of the system. It is intended to capture and convey the architecture technology and various capabilities of the Metabase system.
+This section provides a comprehensive architectural overview of the Metabase system, using a number of different functional blocks to depict different aspects of the system. It is intended to capture and convey the architecture technology and various capabilities of the Metabase environment.
 
 ### [API Overview](api-overview.md)
 
@@ -26,7 +16,7 @@ This section lists some of the core features that Metabase implements in order t
 
 ### [Pre-requisites](https://www.metabase.com/docs/latest/developers-guide/build.html)
 
-There are certain prerequisites a user must follow in order to have a smooth experience while using Metabase. This section lists some  information and a guide which can help accelerate a user’s knowledge about the Metabase ecosystem
+There are certain prerequisites a user must follow in order to have a smooth experience while using Metabase. This section lists some  information and a guide which can help accelerate a user’s knowledge about the Metabase environment.
 
 ### [How to install Metabase?](installation.md)
 
@@ -45,9 +35,9 @@ Connect one or more databases to Metabase by following these instructions. This 
 - [What are the additional features that we contributed?](additional-features.md) 
 - [How to embed a dashboard or a visualization?](embed-dashboard.md)
 
-### Contribution Guidelines
-We love your input! We want to make contributing to this project as easy and transparent as possible. [Make sure to read our Guidelines](contribution-guidelines.md) before making any changes!
+### [Contribution Guidelines](contribution-guidelines.md)
+We love your input! We want to make contributing to this project as easy and transparent as possible. Make sure to read our Guidelines before making any changes!
 
-### FAQs
+### [FAQs](faq.md)
 
-Listed [here](faq.md) are some of the most commonly asked questions about Metabase
+Listed here are some of the most commonly asked questions about Metabase community!
