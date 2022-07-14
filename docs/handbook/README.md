@@ -26,7 +26,7 @@ Follow these steps to install Metabase environment onto your local machine.
 
 Connect one or more databases to Metabase by following these instructions. This section also details a list of databases supported by the Metabase community.
 
-## How to create and design Dashboards?
+## Additional Information
 
 - [Create and design Dashboards](dashboards.md)
 - [How to use databases safely](use-databases-safely.md)
