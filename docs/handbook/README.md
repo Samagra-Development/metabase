@@ -16,7 +16,7 @@
 
 2. **Table of Contents**
 
-     a. How to Create & Design dashboards?
+     a. [How to Create & Design dashboards?](dashboards.md)
 
       - [How to use databases safely](use-databases-safely.md)
 
