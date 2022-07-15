@@ -1,4 +1,4 @@
-1. Overview
+## Overview
 
     A brief [overview](overview.md) which introduces users to Metabase, covers some of the most basic terminlogies, explains the need of Metabase, various concepts and  features, architectural system, core features, A short exploration through the Metabase user interface and how you can utilize this interface to your own advantage and finally steps to install and setup Metabase.
 
@@ -14,7 +14,7 @@
 
      - How to connect a database?
 
-2. Table of Contents
+## Table of Contents
 
      a. How to Create & Design dashboards?
       - How to Create & Design dashboards?
@@ -26,7 +26,7 @@
       - Additional Features
 
       - How to embed a dashboard or a visualization?
-      
+
 
 ### [Architecture](https://www.metabase.com/learn/administration/metabase-at-scale)
 
