@@ -1,37 +1,37 @@
-1. **Overview**
+### **Overview**
 
-    A brief [overview](overview.md) which introduces users to Metabase, covers some of the most basic terminlogies, explains the need of Metabase, various concepts and  features, architectural system, core features, A short exploration through the Metabase user interface and how you can utilize this interface to your own advantage and finally steps to install and setup Metabase.
+A brief [overview](overview.md) which introduces users to Metabase, covers some of the most basic terminlogies, explains the need of Metabase, various concepts and  features, architectural system, core features, A short exploration through the Metabase user interface and how you can utilize this interface to your own advantage and finally steps to install and setup Metabase.
 
-     - [Architecture](#architecture)
+- [Architecture](#architecture)
 
-     - [API Overview](#api-overview)
+- [API Overview](#api-overview)
 
-     - [Core Features](#core-features)
+- [Core Features](#core-features)
 
-     - [Pre-requisites](#pre-requisites)
+- [Pre-requisites](#pre-requisites)
 
-     - [How to install Metabase?](#how-to-install-metabase)
+- [How to install Metabase?](#how-to-install-metabase)
 
-     - [How to connect a database?](#how-to-connect-a-database)
+- [How to connect a database?](#how-to-connect-a-database)
 
-2. **Table of Contents**
+### **Table of Contents**
 
-     a. [How to Create & Design dashboards?](dashboards.md)
+ a. [How to Create & Design dashboards?](dashboards.md)
 
-      - [How to use databases safely](use-databases-safely.md)
+  - [How to use databases safely](use-databases-safely.md)
 
-      - [Frequently used Charts](frequently-used-charts.md)
+  - [Frequently used Charts](frequently-used-charts.md)
 
-      - [How to design mobile responsive dashboards?](mobile-responsive-dashboards.md)
+  - [How to design mobile responsive dashboards?](mobile-responsive-dashboards.md)
 
-      - [Additional Features](additional-features.md)
+  - [Additional Features](additional-features.md)
 
-      - [How to embed a dashboard or a visualization?](https://www.metabase.com/learn/embedding/embedding-charts-and-dashboards)
+  - [How to embed a dashboard or a visualization?](https://www.metabase.com/learn/embedding/embedding-charts-and-dashboards)
 
 
-     b. [How to start Contributing to Metabase?](contribution-guidelines.md)
+b. [How to start Contributing to Metabase?](contribution-guidelines.md)
 
-     c. [Frequently Asked Questions!](faq.md)
+c. [Frequently Asked Questions!](faq.md)
 
 
 ### Architecture
