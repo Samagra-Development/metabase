@@ -75,15 +75,15 @@ Custom JSON config defining either a combination of
 
 ![map chart](/docs/images/CustomMap.png)
 
-### 2. [Download Card as PDF/Image]()
+### 2. Download Card as PDF/Image
 >This section is under construction
 
-### 3. [Download Dashboard as PDF/Image]()
+### 3. Download Dashboard as PDF/Image
 >This section is under construction
 
-### 4. [Download Table as a CSV with conditional formatting]()
+### 4. Download Table as a CSV with conditional formatting
 >This section is under construction
 
-## [Visualizing Data with Maps](https://www.metabase.com/learn/visualization/maps)
+## Visualizing Data with Maps
 
-This section covers how to implement Maps in Metabase. More specifically, it showcases how to visualize data using maps in Metabase. Along with that, it details various map types, options, data configurations, additional features and suitable examples.
+This section covers how to implement Maps in Metabase. More specifically, it showcases how to visualize data using maps in Metabase. Along with that, it details various map types, options, data configurations, additional features and suitable examples. See more about this [here](https://www.metabase.com/learn/visualization/maps).

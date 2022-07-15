@@ -1,8 +1,36 @@
+1. Overview
+
+A brief overview which explains the need of Metabase, various concepts and  features, A short exploration through the Metabase user interface and how you can utilize this interface to your own advantage.
+
+        a. Architecture
+
+        aaa
+        
+
+        b. API Overview
+
+        c. Core Features
+
+        d. Pre-requisites
+
+        e. How to install Metabase?
+
+        f. How to connect a database?
+
+2. Table of Contents
+
+        a. How to Create & Design dashboards?
+ 
+
+
+    
+
+
 ### [Overview of Metabase](overview.md)
 
 A brief overview which explains the need of Metabase, various concepts and  features, A short exploration through the Metabase user interface and how you can utilize this interface to your own advantage.
 
-### [Architecture](architecture.md)
+### [Architecture](https://www.metabase.com/learn/administration/metabase-at-scale)
 
 This section provides a comprehensive architectural overview of the Metabase system, using a number of different functional blocks to depict different aspects of the system. It is intended to capture and convey the architecture technology and various capabilities of the Metabase environment.
 
