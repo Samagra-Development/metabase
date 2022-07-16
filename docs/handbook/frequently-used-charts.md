@@ -86,6 +86,8 @@ You can choose from a number of filter types:
 
 - ID
 
+And many more parameters!
+
 >for example, the following filter sorts all the reviewers whose name starts with chris
 
 ![filter](/docs/images/Filter.png)
