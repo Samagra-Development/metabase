@@ -16,7 +16,7 @@
 
 ### **Table of Contents**
 
-a. How to Create & Design dashboards?
+a. [How to Create & Design dashboards?](dashboards.md)
 
    - [How to use databases safely](use-databases-safely.md)
 
@@ -58,7 +58,7 @@ Follow these steps to install Metabase environment onto your local machine. Clic
 Connect one or more databases to Metabase by following these instructions. This section also details a list of databases supported by the Metabase community. Follow [this](https://www.metabase.com/docs/latest/administration-guide/01-managing-databases.html#adding-a-database-connection) section for more information. 
 
 ### Contribution Guidelines 
-We love your input! We want to make contributing to this project as easy and transparent as possible. Make sure to read our [Guidelines](contribution-guidelines.md) before making any changes!
+We love your input✨! We want to make contributing to this project as easy and transparent as possible. Make sure to read our [Guidelines](contribution-guidelines.md) before making any changes!
 
 ### FAQs
 

@@ -2,7 +2,7 @@
 
 ### 1. Don't have too many Joins in a Query
 
-As a general principle, It is suggested not to have too many joins in a query.  We have to make sure they don't cause more work than you need to perform.  
+As a rule of thumb, It is suggested not to have too many joins in a query.  We have to make sure they don't cause more work than you need to perform.  
 
 A good workaround on that is to create a Materialized view and then create a query on top of that.  A materialized view is a database object that contains the results of a query. You can see more on that [here](https://www.metabase.com/learn/administration/making-dashboards-faster#materialize-views-create-new-tables-to-store-query-results)
 
