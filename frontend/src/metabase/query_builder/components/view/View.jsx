@@ -279,7 +279,7 @@ export default class View extends React.Component {
                 style={{ flexGrow: 1 }}
                 enabled={!isLiveResizable}
               >
-                <div id={key} style={{height: '100%'}}>
+                <div id={key} style={{ height: "100%" }}>
                   <QueryVisualization
                     {...this.props}
                     onAddSeries={onAddSeries}
@@ -290,7 +290,6 @@ export default class View extends React.Component {
                     className="spread"
                   />
                 </div>
-
               </DebouncedFrame>
 
               {ModeFooter && (

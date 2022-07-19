@@ -166,7 +166,7 @@ export default class DashCard extends Component {
     const isEditingDashboardLayout =
       isEditing && clickBehaviorSidebarDashcard == null && !isEditingParameter;
 
-      console.log('----------------======');
+    console.log("----------------======");
     return (
       <div
         className={cx(

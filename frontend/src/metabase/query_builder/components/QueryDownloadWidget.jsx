@@ -32,7 +32,6 @@ const QueryDownloadWidget = ({
   icon,
   params,
 }) => (
-  
   <PopoverWithTrigger
     triggerElement={
       <Tooltip tooltip={t`Download full results`}>
@@ -103,7 +102,6 @@ const QueryDownloadWidget = ({
 
 const UnsavedQueryButton = ({ type, k, result: { json_query = {} }, card }) => (
   <span>
-
     <DownloadButton
       key={k}
       k={k}
@@ -147,7 +145,7 @@ const PublicQueryButton = ({ type, uuid, k, result: { json_query = {} } }) => (
   </span>
 );
 
-const EmbedQueryButton = ({ type,k, token }) => {
+const EmbedQueryButton = ({ type, k, token }) => {
   // Parse the query string part of the URL (e.g. the `?key=value` part) into an object. We need to pass them this
   // way to the `DownloadButton` because it's a form which means we need to insert a hidden `<input>` for each param
   // we want to pass along. For whatever wacky reason the /api/embed endpoint expect params like ?key=value instead

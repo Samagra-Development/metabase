@@ -65,7 +65,7 @@ const ViewFooter = ({
     return null;
   }
 
-  console.log('1112121', k);
+  console.log("1112121", k);
   return (
     <ViewSection className={cx(className, "text-medium border-top")} py={1}>
       <ButtonBar

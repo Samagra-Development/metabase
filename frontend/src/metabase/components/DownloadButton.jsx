@@ -29,9 +29,8 @@ async function convert(key) {
     .then(async canvas => {
       var imgWidth = 210;
       var pageHeight = 295;
-      var imgHeight = canvas.height * imgWidth / canvas.width;
+      var imgHeight = (canvas.height * imgWidth) / canvas.width;
       var heightLeft = imgHeight;
-
 
       let imgData = canvas.toDataURL("image/png");
       //imgData = await resizedataURL(imgData, 100, 100)
@@ -59,7 +58,7 @@ const DownloadButton = ({
 }) =>
   type === "pdf" ? (
     <Box>
-      {console.log('444444444', k)}
+      {console.log("444444444", k)}
       {params && extractQueryParams(params).map(getInput)}
       <Flex
         is="button"

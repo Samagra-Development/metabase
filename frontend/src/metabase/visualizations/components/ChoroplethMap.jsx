@@ -361,10 +361,12 @@ export default class ChoroplethMap extends Component {
         return set;
       });
       heatMapColors = region_conditions.rules
-        .filter(g => !!g.start && !!g.end && !!g.color)
+        .filter((g, index) => !!g.start && !!g.end && !!g.color && groups[index].length)
         .map(g => {
           return g.color;
         });
+        groups = groups.filter((a)=>a.length);
+        console.log(heatMapColors, groups, region_conditions.rules, g);
     }
 
     if (region_conditions && region_conditions.mode === "RANGE") {
