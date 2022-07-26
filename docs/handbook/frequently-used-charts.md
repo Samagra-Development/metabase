@@ -1,12 +1,12 @@
-## Frequently Used Charts
+# Frequently Used Charts
 
 Charts helps our users get a clearer picture of large amounts of data and how they compare with other data. These Charts convey information quickly and easily to the user. A Metabase dashboard contains a set of Charts and Data tables brought together which you can share with your team.
 
 Metabase provides us with following kinds of Charts:
 
-### Big Number
+## Big Number
 
-The Numbers option is for displaying a single number, nice and big. The options for numbers include:
+This is used for displaying a single number, nice and big. The options for numbers include:
 
 - Adding character prefixes or suffixes to it (so you can do things like put a currency symbol in front or a percent at the end)
 
@@ -18,7 +18,7 @@ The Numbers option is for displaying a single number, nice and big. The options 
 
 ![number eg](/docs/images/Number.png)
 
-### Bar Chart
+## Bar Chart
 
 A bar chart or bar graph is a chart or graph that presents categorical data with rectangular bars with heights or lengths proportional to the values that they represent.
 
@@ -28,7 +28,7 @@ Although the Metabase graphs can be plotted vertically (bars standing up) or hor
 
 ![bar chart](/docs/images/BarChart.png)
 
-### Pie Chart
+## Pie Chart
 
 A pie or donut chart can be used when breaking out a metric by a single dimension, especially when the number of possible breakouts is small, like users by gender. If you have more than a few breakouts, like users per country, it’s usually better to use a bar chart so that your users can more easily compare the relative sizes of each bar.
 
@@ -36,7 +36,7 @@ A pie or donut chart can be used when breaking out a metric by a single dimensio
 
 ![pie chart](/docs/images/PieChart.png)
 
-### Line Chart
+## Line Chart
 
 A Line chart, also known as a line graph, is a type of chart used to visualize the value of something over time. It is a graphical representation which connects a series of data points with a continous line.
 
@@ -44,7 +44,7 @@ A Line chart, also known as a line graph, is a type of chart used to visualize t
 
 ![Line Chart](/docs/images/LineChart.png)
 
-### Table
+## Table
 
 The Table option is good for looking at tabular data or for lists of things like users or orders. By default the Metabase shows the data in a tabular format first. The visualization options for tables allow you to add, hide, or rearrange fields in the table you’re looking at, as well as modify their formatting.
 
@@ -52,7 +52,7 @@ The Table option is good for looking at tabular data or for lists of things like
 
 ![table](/docs/images/Table.png)
 
-### Map
+## Map
 
 When you select the Map visualization setting, Metabase will automatically try and pick the best kind of map to use based on the table or result set. Here are the maps that Metabase uses:
 
@@ -74,7 +74,7 @@ When you select the Map visualization setting, Metabase will automatically try a
 
 ![grid map](/docs/images/GridMap.png)
 
-### Filters
+## Filters
 
 Have you ever found yourself in a situation where it seems like you need to create nearly identical copies of the same dashboard, with just one different variable? Maybe you have an Earnings dashboard, but you want to see the data for each city your business is in, or maybe you have a KPI dashboard that you want to see broken out by month.
 
@@ -93,7 +93,7 @@ And many more parameters!
 ![filter](/docs/images/Filter.png)
 
 
-### Additional Charts
+## Additional Charts
 
 Metabase provides much more variations on visualizing data and various chart types. Click [here](https://www.metabase.com/docs/latest/users-guide/05-visualizing-results.html) to see various chart types and learn how you can use them in your Metabase account!
 
