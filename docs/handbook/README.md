@@ -24,17 +24,17 @@ For more information check out [metabase.com](https://metabase.com/)
 
 ## Setting up Metabase
 
-There are certain [pre-requisites](https://www.metabase.com/docs/latest/developers-guide/build.html) you must follow in order to know how to build and run Metabase on your own computer so you can play around with it or test features in development. You can also run development branches of Metabase using a pre-built Docker image.
+There are certain [pre-requisites](https://www.metabase.com/docs/latest/developers-guide/build.html) you must follow in order to know how to build and run Metabase on your own computer so you can play around with it or test features in development. You can also run development branches of Metabase using a pre-built Docker image. There are 3 main steps to set up Metabase:
 
-### Install Metabase
+### Step - 1 : Install Metabase
 
 Here is a [guide](https://github.com/Samagra-Development/metabase/blob/master/docs/operations-guide/installing-metabase.md) on how you can install Metabase and get it [up and running](../operations-guide/start.md).
 
-### Create an admin account
+### Step - 2 : Create an admin account
 
 Here is a [guide](https://www.metabase.com/docs/latest/setting-up-metabase) to help you set up Metabase once you’ve gotten it installed through an admin account.
 
-### Connect it to a database
+### Step - 3 : Connect it to a database
 
 Here is a [guide](../administration-guide/01-managing-databases.md) on how to get Metabase connected it to your data. It's time to give you the lay of the land.
 
